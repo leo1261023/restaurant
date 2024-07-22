@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    outDir: 'dist', // 默認輸出目錄
-  },
+  server: {
+    port: 3000
+  }
 });
