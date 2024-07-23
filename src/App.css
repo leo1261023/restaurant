@@ -208,20 +208,28 @@ body {
 /* 響應式設計 */
 @media (max-width: 768px) {
     .restaurant-item {
-        flex: 0 0 100%; /* 在小屏幕上每行顯示一個項目 */
+        flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
     }
-
+    
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
     .search-content {
         flex-direction: column;
-        gap: 10px;
     }
-
-    .search-content h1 {
-        margin-right: 0;
+    
+    .search-content h1, .search-content label {
+        text-align: center;
+    }
+    
+    .search-content label {
         margin-bottom: 10px;
     }
-
-    .carousel-container {
-        flex-direction: column;
+    
+    .buttons {
+        display: flex;
+        justify-content: center;
     }
 }
