@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import * as XLSX from 'xlsx';
 
 function Host() {
     const [restaurants, setRestaurants] = useState([]);
@@ -11,14 +10,10 @@ function Host() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('/restaurants_data.xlsx')
-            .then(response => response.arrayBuffer())
+        fetch('/restaurants_data.json')
+            .then(response => response.json())
             .then(data => {
-                const workbook = XLSX.read(data, { type: 'array' });
-                const sheetName = workbook.SheetNames[0];
-                const sheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(sheet);
-                setRestaurants(jsonData);
+                setRestaurants(data);
             })
             .catch(error => console.error('Error fetching data:', error));
 
