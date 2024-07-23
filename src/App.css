@@ -214,6 +214,11 @@ body {
         height: auto; /* 高度自動調整 */
         box-sizing: border-box;
     }
+
+    .restaurant-item img {
+        height: auto; /* 自動調整高度 */
+    }
+
     .search-container {
         flex-direction: column;
         align-items: stretch;
