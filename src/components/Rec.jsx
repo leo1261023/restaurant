@@ -7,34 +7,24 @@ function Rec() {
     const location = useLocation();
 
     useEffect(() => {
-        const loadXLSX = async () => {
-            const XLSX = await import('xlsx');
-            const params = new URLSearchParams(location.search);
-            const area = params.get('area');
-            const cuisine = params.get('cuisine');
+        const params = new URLSearchParams(location.search);
+        const area = params.get('area');
+        const cuisine = params.get('cuisine');
 
-            fetch('/restaurants_data.xlsx')
-                .then(response => response.arrayBuffer())
-                .then(data => {
-                    const workbook = XLSX.read(data, { type: 'array' });
-                    const sheetName = workbook.SheetNames[0];
-                    const sheet = workbook.Sheets[sheetName];
-                    const jsonData = XLSX.utils.sheet_to_json(sheet);
+        fetch('/restaurants_data.json')
+            .then(response => response.json())
+            .then(data => {
+                // 過濾符合條件的餐廳
+                const filtered = data.filter(restaurant => {
+                    const matchArea = area ? restaurant.query.includes(area) : true;
+                    const matchCuisine = cuisine ? restaurant.query.includes(cuisine) : true;
+                    return matchArea && matchCuisine;
+                });
 
-                    // 過濾符合條件的餐廳
-                    const filtered = jsonData.filter(restaurant => {
-                        const matchArea = area ? restaurant.query.includes(area) : true;
-                        const matchCuisine = cuisine ? restaurant.query.includes(cuisine) : true;
-                        return matchArea && matchCuisine;
-                    });
-
-                    setFilteredRestaurants(filtered);
-                })
-                .catch(error => console.error('Error fetching data:', error));
-        };
-
-        loadXLSX();
-    }, [location]);
+                setFilteredRestaurants(filtered);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, [location.search]);
 
     return (
         <div className="rec-container">
