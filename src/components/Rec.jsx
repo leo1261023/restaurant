@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import '../App.css';
-import * as XLSX from 'xlsx';
 
 function Rec() {
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        const area = params.get('area');
-        const cuisine = params.get('cuisine');
+        const loadXLSX = async () => {
+            const XLSX = await import('xlsx');
+            const params = new URLSearchParams(location.search);
+            const area = params.get('area');
+            const cuisine = params.get('cuisine');
 
-        fetch('/restaurants_data.xlsx')
-            .then(response => response.arrayBuffer())
-            .then(data => {
-                const workbook = XLSX.read(data, { type: 'array' });
-                const sheetName = workbook.SheetNames[0];
-                const sheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(sheet);
+            fetch('/restaurants_data.xlsx')
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const sheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(sheet);
 
-                // 過濾符合條件的餐廳
-                const filtered = jsonData.filter(restaurant => {
-                    const matchArea = area ? restaurant.query.includes(area) : true;
-                    const matchCuisine = cuisine ? restaurant.query.includes(cuisine) : true;
-                    return matchArea && matchCuisine;
-                });
+                    // 過濾符合條件的餐廳
+                    const filtered = jsonData.filter(restaurant => {
+                        const matchArea = area ? restaurant.query.includes(area) : true;
+                        const matchCuisine = cuisine ? restaurant.query.includes(cuisine) : true;
+                        return matchArea && matchCuisine;
+                    });
 
-                setFilteredRestaurants(filtered);
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }, [location.search]);
+                    setFilteredRestaurants(filtered);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        };
+
+        loadXLSX();
+    }, [location]);
 
     return (
         <div className="rec-container">
@@ -47,7 +51,7 @@ function Rec() {
                             </div>
                         ))
                     ) : (
-                        <p>nono</p>
+                        <p>没有找到符合条件的餐厅。</p>
                     )}
                 </div>
                 <Link to="/">

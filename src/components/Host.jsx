@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import * as XLSX from 'xlsx';
 
 function Host() {
     const [restaurants, setRestaurants] = useState([]);
@@ -11,21 +10,27 @@ function Host() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('/restaurants_data.xlsx')
-            .then(response => response.arrayBuffer())
-            .then(data => {
-                const workbook = XLSX.read(data, { type: 'array' });
-                const sheetName = workbook.SheetNames[0];
-                const sheet = workbook.Sheets[sheetName];
-                const jsonData = XLSX.utils.sheet_to_json(sheet);
-                setRestaurants(jsonData);
-            })
-            .catch(error => console.error('Error fetching data:', error));
+        const loadXLSX = async () => {
+            const XLSX = await import('xlsx');
 
-        fetch('/toprestaurants.json')
-            .then(response => response.json())
-            .then(data => setTopRestaurants(data))
-            .catch(error => console.error('Error fetching data:', error));
+            fetch('/restaurants_data.xlsx')
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const sheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(sheet);
+                    setRestaurants(jsonData);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+
+            fetch('/toprestaurants.json')
+                .then(response => response.json())
+                .then(data => setTopRestaurants(data))
+                .catch(error => console.error('Error fetching data:', error));
+        };
+
+        loadXLSX();
     }, []);
 
     const handleSearch = () => {
@@ -60,7 +65,7 @@ function Host() {
                         <option value="日式">日式</option>
                         <option value="美式">美式</option>
                         <option value="墨西哥菜">墨西哥菜</option>
-                        <option value="泰式">泰式</option>
+                        <option value="泰式">泰式</option>                    
                         <option value="韓式">韓式</option>
                         <option value="印度菜">印度菜</option>
                         <option value="法式">法式</option>
