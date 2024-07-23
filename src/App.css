@@ -209,9 +209,7 @@ body {
 @media (max-width: 768px) {
     .restaurant-item {
         flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
-        max-width: 100%;
-        min-width: 100%;
-        box-sizing: border-box;
+        width: 100%;
     }
     
     .search-container {
