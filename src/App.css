@@ -208,17 +208,10 @@ body {
 /* 響應式設計 */
 @media (max-width: 768px) {
     .restaurant-item {
-        flex: 0 0 90%; /* 每個餐廳佔寬度的90% */
-        max-width: 600%; /* 限制最大寬度 */
-        min-width: 600%; /* 限制最小寬度 */
-        height: auto; /* 高度自動調整 */
-        box-sizing: border-box;
+        flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
+        width: 100%;
     }
-
-    .restaurant-item img {
-        height: auto; /* 自動調整高度 */
-    }
-
+    
     .search-container {
         flex-direction: column;
         align-items: stretch;
