@@ -72,7 +72,7 @@ print(restaurants)
 
 
 # 將資料儲存到本地 JSON 檔案中
-with open(r'C:\Users\user\Desktop\restaurant\rest-rec\public\toprestaurants.json','w', encoding='utf-8') as f:
+with open(r'C:\Users\user\Desktop\restaurant\rest-rec\public\toprestaurants.json', encoding='utf-8') as f:
     json.dump(restaurants, f, ensure_ascii=False, indent=4)
 print("Data saved to public/restaurants.json")
 
