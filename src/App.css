@@ -204,3 +204,24 @@ body {
 .buttons button:hover {
     background-color: #0056b3;
 }
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .restaurant-item {
+        flex: 0 0 calc((100% - 60px) / 2); /* 在小屏幕上每行顯示兩個項目 */
+    }
+
+    .search-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-content h1 {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .carousel-container {
+        flex-direction: column;
+    }
+}
