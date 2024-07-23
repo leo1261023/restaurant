@@ -208,7 +208,7 @@ body {
 /* 響應式設計 */
 @media (max-width: 768px) {
     .restaurant-item {
-        flex: 0 0 calc((100% - 60px) / 2); /* 在小屏幕上每行顯示兩個項目 */
+        flex: 0 0 100%; /* 在小屏幕上每行顯示一個項目 */
     }
 
     .search-content {
