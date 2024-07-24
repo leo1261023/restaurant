@@ -403,41 +403,16 @@ body {
 
 
 /* 響應式設計 */
+/* 響應式設計 */
 @media (max-width: 768px) {
     .rec-restaurant-item {
         flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
         width: 100%;
         margin-bottom: 20px; /* 每個餐廳之間添加間距 */
-        padding: 10px; /* 與首頁人氣餐廳一樣的大小 */
-        border-radius: 5px;
-        text-align: center;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .rec-restaurant-item img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    .rec-restaurant-item a {
-        display: block;
-        margin-top: 10px;
-        font-size: 16px;
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-    }
-
-    .rec-restaurant-item a:hover {
-        text-decoration: underline;
     }
     
-    .rec-section-title {
-        font-size: 24px; /* 縮小搜尋結果頁面的標題字體大小 */
+    .title {
+        font-size: 24px; /* 縮小 "台北餐廳推薦系統" 的字體大小 */
     }
     
     .search-container {
@@ -462,3 +437,4 @@ body {
         justify-content: center;
     }
 }
+
