@@ -404,7 +404,7 @@ body {
 
 /* 響應式設計 */
 @media (max-width: 768px) {
-    .restaurant-item {
+    .restaurant-item, .rec-restaurant-item {
         flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
         width: 100%;
     }
