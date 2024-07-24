@@ -401,8 +401,12 @@ body {
     text-align: center;
 }
 
-/* 響應式設計 */
+
 @media (max-width: 768px) {
+    .title {
+        font-size: 24px; /* 縮小 "台北餐廳推薦系統" 的字體大小 */
+    }
+    
     .rec-restaurant-item {
         flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
         width: 100%;
@@ -435,10 +439,8 @@ body {
         text-decoration: underline;
     }
     
-
-
-    .title {
-        font-size: 24px; /* 縮小 "台北餐廳推薦系統" 的字體大小 */
+    .rec-section-title {
+        font-size: 24px; /* 縮小搜尋結果頁面的標題字體大小 */
     }
     
     .search-container {
