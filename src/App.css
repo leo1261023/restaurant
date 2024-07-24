@@ -411,7 +411,7 @@ body {
     }
     
     .UpTitle .title {
-        font-size: 22px; /* 縮小 "台北餐廳推薦系統" 的字體大小 */
+        font-size: 24px; /* 縮小 "台北餐廳推薦系統" 的字體大小 */
     }
 
     .UpTitle .nav-links a {
@@ -419,12 +419,9 @@ body {
     }
 
     .section-title, .search-title {
-        font-size: 12px;
+        font-size: 16px;
     }
 
-    .search-title {
-        font-size: 12px;
-    }
     .rec-restaurant-item {
         flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
         width: 100%;
