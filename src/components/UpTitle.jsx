@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // 確保路徑正確
 
 function UpTitle() {
   return (
