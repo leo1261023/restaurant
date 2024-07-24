@@ -61,13 +61,9 @@ function Host() {
                         <option value="中式">中式</option>
                         <option value="日式">日式</option>
                         <option value="美式">美式</option>
-                        <option value="墨西哥菜">墨西哥菜</option>
                         <option value="泰式">泰式</option>
                         <option value="韓式">韓式</option>
-                        <option value="印度菜">印度菜</option>
                         <option value="法式">法式</option>
-                        <option value="越南菜">越南菜</option>
-                        <option value="地中海料理">地中海料理</option>
                         <option value="素食">素食</option>
                         <option value="海鮮">海鮮</option>
                     </select>

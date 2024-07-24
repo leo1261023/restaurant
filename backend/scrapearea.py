@@ -12,7 +12,7 @@ driver = webdriver.Chrome(options=options)
 
 # 設置地區和菜系列表
 areas = ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"]
-cuisines = ["中式", "日式", "美式", "墨西哥菜", "泰式", "韓式", "印度菜", "法式", "越南菜", "地中海料理", "素食", "海鮮"]
+cuisines = ["中式", "日式", "美式", "泰式", "韓式","法式","素食", "海鮮"]
 
 def scroll_down():
     """
@@ -59,7 +59,7 @@ def scrape_restaurants(query):
     爬取特定查詢條件的餐廳數據，直到至少找到30家餐廳。
     """
     all_data = []
-    while len(all_data) < 100:
+    while len(all_data) < 150:
         url = f"https://www.google.com/maps/search/台北+{query}+餐廳"
         driver.get(url)
         time.sleep(10)  # 等待頁面加載
@@ -71,13 +71,13 @@ def scrape_restaurants(query):
         all_data.extend(new_data)
         
         # 確保不超過30家餐廳
-        if len(all_data) > 100:
-            all_data = all_data[:100]
+        if len(all_data) > 150:
+            all_data = all_data[:150]
             break
     
     print(f"Found {len(all_data)} restaurants for {query}")
     
-    return all_data[:50]
+    return all_data[:150]
 
 all_restaurants = []
 
