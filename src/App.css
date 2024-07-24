@@ -400,13 +400,12 @@ body {
     margin-bottom: 20px;
     text-align: center;
 }
-
-
 /* 響應式設計 */
 @media (max-width: 768px) {
-    .restaurant-item, .rec-restaurant-item {
+    .rec-restaurant-item {
         flex: 0 0 100%; /* 每個餐廳佔寬度的100% */
         width: 100%;
+        margin-bottom: 20px; /* 每個餐廳之間添加間距 */
     }
     
     .search-container {
@@ -429,5 +428,9 @@ body {
     .buttons {
         display: flex;
         justify-content: center;
+    }
+    
+    .section-title, .search-title, .rec-section-title {
+        font-size: 24px; /* 縮小標題字體大小 */
     }
 }
