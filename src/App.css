@@ -13,16 +13,17 @@ body {
     display: flex; /* 使用彈性佈局 */
     justify-content: space-between; /* 兩邊對齊 */
     align-items: center; /* 垂直居中 */
-    background-color: #333; /* 設置背景顏色 */
-    padding: 10px 20px; /* 內邊距 */
-    color: white; /* 文字顏色 */
+    background-color: #00a680; /* 設置背景顏色 */
+    padding: 15px 30px; /* 內邊距 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加陰影 */
 }
 
-/* 統一標題樣式 */
-.section-title, .search-title {
-    font-size: 36px;
-    text-align: center;
-    margin: 20px 0;
+.UpTitle .title {
+    font-size: 36px; /* 字體大小 */
+    font-weight: bold; /* 粗體 */
+    color: white; /* 文字顏色 */
+    margin: 0; /* 去除外邊距 */
+    font-family: 'Helvetica Neue', sans-serif; /* 設置現代字體 */
 }
 
 .UpTitle .nav-links {
@@ -35,26 +36,22 @@ body {
     text-decoration: none; /* 移除下劃線 */
     font-size: 16px; /* 字體大小 */
     padding: 10px; /* 內邊距 */
+    font-weight: bold; /* 加粗 */
+    border-radius: 5px; /* 圓角 */
+    transition: background-color 0.3s ease; /* 滑過效果的過渡 */
 }
 
 .UpTitle .nav-links a:hover {
-    background-color: #555; /* 滑過背景顏色 */
-    border-radius: 5px; /* 圓角 */
-}
-/* 設置頁面背景顏色和全局樣式 */
-body {
-    background-color: rgb(255, 255, 255);
-    color: black;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.2); /* 滑過背景顏色 */
 }
 
-.section-title {
-    font-size: 24px;
+/* 統一標題樣式 */
+.section-title, .search-title {
+    font-size: 36px;
     text-align: center;
     margin: 20px 0;
+    font-weight: bold; /* 加粗 */
+    font-family: 'Helvetica Neue', sans-serif; /* 設置現代字體 */
 }
 
 /* 搜尋區塊樣式 */
@@ -95,20 +92,6 @@ body {
     margin-right: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.search-button {
-    background-color: #00a680;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background-color: #007b5f;
 }
 
 /* 人氣餐廳背景 */
@@ -247,26 +230,41 @@ body {
     font-size: 16px;
 }
 
-.buttons button {
-    background-color: #007bff;
+.button {
+    background-color: #00a680;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 30px;
+    padding: 10px 20px;
     font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Helvetica Neue', sans-serif; /* 設置現代字體 */
+    transition: background-color 0.3s ease; /* 滑過效果的過渡 */
+    margin-top: 20px; /* 添加一些間距 */
 }
 
-.buttons button:hover {
-    background-color: #0056b3;
+.button:hover {
+    background-color: #007b5f;
 }
+
 .rec-container {
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* 確保內容垂直居中 */
+}
+
+.rec-content {
+    width: 100%;
+    max-width: 800px;
+    text-align: center; /* 確保內容水平居中 */
 }
 
 .rec-section-title {
     font-size: 24px;
-    text-align: center;
     margin: 20px 0;
 }
 
@@ -276,7 +274,6 @@ body {
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    width: 100%;
 }
 
 .rec-restaurant-item {
@@ -310,7 +307,7 @@ body {
 }
 
 .rec-home-button {
-    background-color: #007bff;
+    background-color: #00a680;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -322,8 +319,88 @@ body {
 }
 
 .rec-home-button:hover {
-    background-color: #0056b3;
+    background-color: #007b5f;
 }
+
+/* 會員登入和註冊頁面樣式 */
+.member-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 垂直居中 */
+    background-color: #f5f5f5; /* 背景色 */
+}
+
+.member-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.member-content h1 {
+    margin-bottom: 20px;
+}
+
+.member-content label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.member-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.home-button {
+    background-color: #00a680;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.home-button:hover {
+    background-color: #007b5f;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #00a680;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #007b5f;
+}
+/* 錯誤消息樣式 */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 
 /* 響應式設計 */
 @media (max-width: 768px) {

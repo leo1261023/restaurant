@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // 確保路徑正確
+import '../App.css';
 
 function Signin() {
   return (
@@ -16,13 +16,13 @@ function Signin() {
         <label>密碼</label>
         <input type="password" />
         <div className="buttons">
-          <button>註冊</button>
+          <button className="button">註冊</button>
           <Link to="/member">
-          <button >返回</button>
-        </Link>
+            <button className="button">返回</button>
+          </Link>
         </div>
         <Link to="/">
-          <button className="home-button">回首頁</button>
+          <button className="button home-button">回首頁</button>
         </Link>
       </div>
     </div>

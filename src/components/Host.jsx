@@ -7,6 +7,7 @@ function Host() {
     const [topRestaurants, setTopRestaurants] = useState([]);
     const [cuisine, setCuisine] = useState('');
     const [area, setArea] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,6 +25,11 @@ function Host() {
     }, []);
 
     const handleSearch = () => {
+        if (!cuisine && !area) {
+            setError('請選擇條件');
+            return;
+        }
+
         const params = new URLSearchParams({ cuisine, area });
         navigate(`/rec?${params.toString()}`);
     };
@@ -48,6 +54,7 @@ function Host() {
         <div className="HostRes">
             <div className="search-container">
                 <h1 className="section-title">餐廳搜尋</h1>
+                {error && <div className="error-message">{error}</div>}
                 <div className="search-input-container">
                     <select className="search-select" onChange={e => setCuisine(e.target.value)}>
                         <option value="" disabled selected hidden>菜系</option>
@@ -79,7 +86,7 @@ function Host() {
                         <option value="南港區">南港區</option>
                         <option value="文山區">文山區</option>
                     </select>
-                    <button className="search-button" onClick={handleSearch}>搜尋</button>
+                    <button className="button" onClick={handleSearch}>搜尋</button>
                 </div>
             </div>
             <h1 className="section-title">人氣餐廳</h1>

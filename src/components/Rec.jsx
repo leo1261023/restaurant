@@ -14,14 +14,31 @@ function Rec() {
         fetch('/restaurants_data.json')
             .then(response => response.json())
             .then(data => {
-                // 過濾符合條件的餐廳
-                const filtered = data.filter(restaurant => {
-                    const matchArea = area ? restaurant.query.includes(area) : true;
-                    const matchCuisine = cuisine ? restaurant.query.includes(cuisine) : true;
-                    return matchArea && matchCuisine;
-                });
+                let filteredByArea = data;
+                let filteredByCuisine = data;
 
-                setFilteredRestaurants(filtered);
+                // 如果有區域條件，先過濾符合區域的餐廳
+                if (area) {
+                    filteredByArea = data.filter(restaurant => restaurant.query === area);
+                }
+
+                // 如果有菜系條件，過濾符合菜系的餐廳
+                if (cuisine) {
+                    filteredByCuisine = data.filter(restaurant => restaurant.query === cuisine);
+                }
+
+                // 如果同時有兩個條件，找出同時出現在兩個篩選結果中的餐廳
+                let finalFiltered = filteredByArea.filter(restaurant => 
+                    filteredByCuisine.some(cuisineRestaurant => cuisineRestaurant.name === restaurant.name)
+                );
+
+                // 使用 Set 來確保每個餐廳只出現一次
+                const uniqueRestaurants = Array.from(new Set(finalFiltered.map(r => r.name)))
+                    .map(name => {
+                        return finalFiltered.find(restaurant => restaurant.name === name);
+                    });
+
+                setFilteredRestaurants(uniqueRestaurants);
             })
             .catch(error => console.error('Error fetching data:', error));
     }, [location.search]);
@@ -41,11 +58,11 @@ function Rec() {
                             </div>
                         ))
                     ) : (
-                        <p>没有找到符合条件的餐厅。</p>
+                        <p>很抱歉，沒有符合餐廳</p>
                     )}
                 </div>
                 <Link to="/">
-                    <button className="rec-home-button">回首頁</button>
+                    <button className="button">回首頁</button>
                 </Link>
             </div>
         </div>
