@@ -47,6 +47,9 @@ function Rec() {
         <div className="rec-container">
             <div className="rec-content">
                 <h1 className="rec-section-title">搜尋結果</h1>
+                <Link to="/">
+                    <button className="button">回首頁</button>
+                </Link>
                 <div className="rec-restaurant-list">
                     {filteredRestaurants.length > 0 ? (
                         filteredRestaurants.map((restaurant, index) => (
@@ -61,9 +64,6 @@ function Rec() {
                         <p>很抱歉，沒有符合餐廳</p>
                     )}
                 </div>
-                <Link to="/">
-                    <button className="button">回首頁</button>
-                </Link>
             </div>
         </div>
     );
